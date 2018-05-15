@@ -1,0 +1,120 @@
+#DEVORAH AKHAMZADEH
+
+def halfBetter():
+  pic= makePicture(pickAFile())
+  for x in range(0, getWidth(pic)):
+    for y in range (getHeight(pic)/2, getHeight(pic)):
+      p = getPixel(pic,x,y)
+      r = getRed(p)
+      setRed( p, r *.5)
+  repaint(pic)
+  writePictureTo(pic, "/Users/macuser/Desktop/Python manipulated pics/halfPic.png")
+      
+      
+def verticalMirror(): 
+  pic= makePicture(pickAFile())
+  for x in range(0, getWidth(pic)/2):
+   for y in range (0, getHeight(pic)):
+    leftPix = getPixel(pic, x, y)
+    rightPix = getPixel(pic, getWidth(pic)-x-1, y)
+    c = getColor(leftPix)
+    setColor(rightPix, c)
+  writePictureTo(pic, "/Users/macuser/Desktop/Python manipulated pics/vertMirror.png")
+   
+
+def horizontalMirrorTB():
+  pic= makePicture(pickAFile())
+  for x in range(0, getWidth(pic)): 
+     for y in range (0, getHeight(pic)/2):
+       topPix = getPixel( pic, x, y)
+       bottomPix = getPixel(pic, x, getHeight(pic)-y-1)
+       c = getColor(topPix)
+       setColor(bottomPix, c)
+  repaint(pic)
+  writePictureTo(pic, "/Users/macuser/Desktop/Python manipulated pics/horizontalMirrorTB.png")
+   
+
+def horizontalMirrorBT():
+  pic= makePicture(pickAFile())
+  for x in range(0, getWidth(pic)): 
+     for y in range (0, getHeight(pic)/2):
+       topPix = getPixel( pic, x, y)
+       bottomPix = getPixel(pic, x, getHeight(pic)-y-1)
+       c = getColor(bottomPix)
+       setColor(topPix, c)
+  repaint(pic)
+  writePictureTo(pic, "/Users/macuser/Desktop/Python manipulated pics/horizontalMirrorBT.png")
+   
+
+def quadMirror():
+ pic = makePicture(pickAFile())
+ for x in range(0, getWidth(pic)/2):
+  for y in range (0, getHeight(pic)):
+   leftPix = getPixel( pic, x, y)
+   rightPix = getPixel(pic, getWidth(pic)-x-1, y)
+   c = getColor(leftPix)
+   setColor(rightPix, c)
+    
+ for x in range(0, getWidth(pic)):
+  for y in range (0, getHeight(pic)/2): 
+    topPix = getPixel( pic, x, y)
+    bottomPix = getPixel(pic, x, getHeight(pic)-y-1)
+    c = getColor(topPix)
+    setColor(bottomPix, c)
+ writePictureTo(pic, "/Users/macuser/Desktop/Python manipulated pics/quadMirror.png")
+
+
+def simplePic():
+  mypic = makeEmptyPicture(100,100)
+  for x in range (0, getWidth(mypic)):
+    for y in range(0, getHeight(mypic)):
+      setColor(getPixel(mypic,x,y), blue)
+  show (mypic)
+  return mypic
+     
+def simpleCopy(filename):
+  pic = makePicture(filename)
+  w = getWidth(pic)
+  h = getHeight(pic)
+  mypic = makeEmptyPicture(w,h)
+  for x in range(0, getWidth(pic)):
+    for y in range(0, getHeight(pic)):
+       color = getColor(getPixel(pic,x,y))
+       setColor(getPixel(mypic,x,y), color)
+  return mypic
+  writePictureTo(mypic, "/Users/macuser/Desktop/Python manipulated pics/copy.png")
+
+
+def rotatePic():
+  pic = makePicture(pickAFile())
+  newpic = makeEmptyPicture(getHeight(pic), getWidth(pic))
+  for x in range (0, getWidth(pic)):
+    for y in range (0, getHeight(pic)):
+      px = getColor(getPixel(pic, x, y))
+      setColor(getPixel(newpic, y, getWidth(pic)-x-1), px)
+  repaint (newpic)
+  return newpic
+  show(newpic)
+  writePictureTo(newpic,"/Users/macuser/Desktop/Python manipulated pics/rotatedPic.png") 
+
+
+def shrink():
+  pic = makePicture(pickAFile)
+  pixels = getPixels(pic)
+  width = getWidth(pic)
+  height = getHeight(pic)
+  smallerpic = makeEmptyPicture(width/2,height/2)
+  for x in range(1,width,2):
+    for y in range(1,height,2):
+      px = getPixel(pic,x,y)
+      p = getColor(px)
+      np = getPixel(smallerpic,x/2,y/2)
+      setColor(np,p)
+  writePictureTo(smallerpic, "/Users/macuser/Desktop/Python manipulated pics/shrink.png")
+
+
+
+
+
+
+
