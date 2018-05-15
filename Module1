@@ -1,0 +1,98 @@
+def getPic():
+return makePicture(pickAFile())
+
+def halfRed():
+pic = getPic()
+pixels = getPixels(pic)
+for pix in pixels:
+r = getRed(pix)
+setRed(pix, r* 0.5 )
+repaint (pic)
+
+def noBlue():
+pic = getPic()
+pixels = getPixels(pic)
+for pixs in pixels:
+b = getBlue(pixs)
+setBlue(pixs, b * 0)
+repaint (pic)
+
+def lessRed(percent):
+percentChange = (100-percent) * .01
+pic = getPic()
+pixels = getPixels(pic)
+for pix in pixels:
+r = getRed(pix)
+setRed(pix, r* percentChange)
+repaint (pic)
+
+
+def moreRed(percent):
+percentChange = (100 + percent) * .01
+pic = getPic()
+pixels = getPixels(pic)
+for pix in pixels:
+r = getRed(pix)
+setRed(pix, r *percentChange)
+repaint(pic)
+
+def roseColoredGlasses():
+pic = getPic()
+pixels = getPixels(pic)
+for pix in pixels:
+r = getRed(pix)
+b = getBlue(pix)
+g = getGreen(pix)
+setBlue(pix, r *.80)
+setGreen(pix, r *.4)
+# setRed is not realy necessary 
+setRed(pix, r *1.0 )
+repaint (pic)
+
+
+def lightenUp():
+pic = getPic()
+pixels = getPixels(pic)
+for pix in pixels:
+newColor = makeLighter(getColor(pix))
+setColor (pix, newColor)
+repaint (pic)
+
+
+def makeNegative():
+pic = getPic()
+pixels = getPixels(pic)
+for pix in pixels:
+r = getRed(pix)
+b = getBlue(pix)
+g = getGreen(pix)
+setBlue(pix,255-b)
+setGreen(pix,255-g)
+setRed(pix,255-r)
+repaint(pic)
+
+
+def BnW():
+pic = getPic()
+pixels = getPixels(pic)
+for pix in pixels:
+r = getRed(pix)
+b = getBlue(pix)
+g = getGreen(pix)
+intensity = (r +g+b)/3
+newColor = makeColor(intensity,intensity,intensity)
+setColor (pix, newColor)
+repaint(pic)
+
+
+def betterBnW():
+pic = getPic()
+pixels = getPixels(pic)
+for pix in pixels:
+newR = getRed(pix)* .299
+newB = getBlue(pix)*.587
+newG = getGreen(pix)*.114
+intensity = newR + newB + newG
+newColor = makeColor(intensity, intensity, intensity)
+setColor (pix, newColor)
+repaint(pic)
